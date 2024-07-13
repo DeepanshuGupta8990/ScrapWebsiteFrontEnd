@@ -15,20 +15,7 @@ export default function Home() {
   const [state,setState] = useState(1);
 
   const downloadCSV = async () => {
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/downloadCSV`, {
-        responseType: 'blob',
-      });
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'scrapedData.csv');
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    } catch (error) {
-      console.error('Error downloading the CSV:', error);
-    }
+    window.open('https://downloadcsv.onrender.com/downloadCSV', '_blank');
   };
 
   async function deleteScrapData() {
