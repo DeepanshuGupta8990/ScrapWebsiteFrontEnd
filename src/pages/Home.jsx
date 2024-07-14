@@ -112,6 +112,7 @@ export default function Home() {
         {
           loading && <LoaderBox>
           <CircularProgress/>
+          <p>The server is getting started, this can take up to 1-2 minutes, it's a free server that's why its talking time to start</p>
             </LoaderBox>
         }
         <Pagination 
@@ -161,4 +162,6 @@ const LoaderBox = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `

@@ -40,4 +40,8 @@ const StyledTextField = styled(TextField)`
     height: 20px; 
     background-color: #F9FaFb; 
   }
+
+  @media (max-width: 650px) {
+    width: 80vw;
+  }
 `;

@@ -98,6 +98,7 @@ const InfoDiv = styled.div`
     flex-direction: column;
     height: auto;
     align-items: flex-start;
+    gap: 10px;
   }
 
 `
@@ -126,6 +127,11 @@ export const HeaderComp = styled.div`
  background-color: white;
  margin: 5px;
  border-radius: 5px;
+ @media (max-width: 650px) {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
+  }
 `
 export const Ptag = styled.p`
   padding: 0px;
@@ -135,6 +141,12 @@ export const Ptag = styled.p`
 const CompleteInfoDiv = styled.div`
   display: flex;
   flex-direction: column;
+  @media (max-width: 650px) {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
+    padding-left: 10px;
+  }
 `
 
 export const DescriptionPtag = styled(Ptag)`

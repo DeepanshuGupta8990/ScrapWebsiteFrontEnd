@@ -52,6 +52,10 @@ const TopComponent = styled.div`
   padding: 20px 15px;
   background-color: white;
   border-radius: 5px;
+  @media (max-width: 650px) {
+    padding: 10px;
+    margin: 0px;
+  }
 `;
 
 const DivComp = styled.div`
@@ -69,7 +73,6 @@ const DivComp = styled.div`
   
   @media (max-width: 500px) {
     height: auto;
-    width: 100vw;
   }
 `;
 
@@ -85,7 +88,7 @@ const Breadcrumb = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #374151; /* Color for Home */
+  color: #374151; 
   
   &:hover {
     text-decoration: underline;
@@ -93,12 +96,12 @@ const StyledLink = styled(Link)`
 `;
 
 const Separator = styled.span`
-  color: #9CA3AF; /* Color for the > separator */
+  color: #9CA3AF; 
   margin: 0 5px;
 `;
 
 const OverviewText = styled.span`
-  color: #374151; /* Color for Overview */
+  color: #374151;
 `;
 
 export default App;

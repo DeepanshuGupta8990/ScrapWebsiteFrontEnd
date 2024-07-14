@@ -60,4 +60,8 @@ const StyledButton = styled.button`
   &:active{
     transform: scale(0.9);
   }
+
+  @media (max-width: 650px) {
+    width: 80vw;
+  }
 `;
