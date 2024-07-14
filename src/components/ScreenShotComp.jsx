@@ -34,4 +34,8 @@ const ScreenShotCont = styled.div`
     border-radius: 5px;
     padding: 30px;
     margin: 5px;
+    @media (max-width: 650px) {
+    min-width: 90%;
+    max-width: 90%;
+  }
 `

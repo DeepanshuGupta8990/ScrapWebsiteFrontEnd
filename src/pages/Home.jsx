@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Button, Checkbox } from '@mui/material';
 import { toast } from 'react-toastify';
 import Pagination from '@mui/material/Pagination';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Home() {
   const [dataArray, setDataArray] = useState([]);
@@ -13,6 +14,7 @@ export default function Home() {
   const [totalPages, setTotalPages] = useState(0);
   const [check,setCheck] = useState(false);
   const [state,setState] = useState(1);
+  const [loading,setLoading] = useState(true);
 
   const downloadCSV = async () => {
     window.open('https://downloadcsv.onrender.com/downloadCSV', '_blank');
@@ -55,6 +57,7 @@ export default function Home() {
       try {
         const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/getAllData?page=${page}&limit=4`);
         console.log("data is calling")
+        setLoading(false);
         setDataArray(data.data);
         setTotalPages(data.totalPages);
       } catch (error) {
@@ -76,7 +79,8 @@ export default function Home() {
             CSV
           </Button>
         </DeleteSection>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+     <TableDiv>
+     <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr>
               <th style={{ border: '1px solid #f9fafb', padding: '8px', color: "#6B7280" }}>
@@ -94,12 +98,22 @@ export default function Home() {
               <th style={{ border: '1px solid #f9fafb', padding: '8px', color: "#6B7280" }}>Phone</th>
             </tr>
           </thead>
-          <tbody>
+        {
+          !loading && (
+            <tbody>
             {dataArray.map((element) => (
               <TableElement key={element._id} data={element} deleteArray={deleteArray} setDeleteArray={setDeleteArray} />
             ))}
           </tbody>
+          )
+        }
         </table>
+     </TableDiv>
+        {
+          loading && <LoaderBox>
+          <CircularProgress/>
+            </LoaderBox>
+        }
         <Pagination 
           count={totalPages} 
           page={page} 
@@ -119,7 +133,20 @@ const HomeMainCont = styled.div`
   background-color: #f9fafb;
   border-radius: 5px;
   margin: 5px;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+  @media (max-width: 400px) {
+    width: 110%;
+  }
 `;
+
+const TableDiv = styled.div`
+  overflow: auto;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+`
 
 const DeleteSection = styled.div`
   display: flex;
@@ -129,3 +156,9 @@ const DeleteSection = styled.div`
   background-color: white;
   padding: 30px;
 `;
+
+const LoaderBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`

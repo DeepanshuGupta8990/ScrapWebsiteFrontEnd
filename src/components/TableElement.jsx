@@ -3,6 +3,7 @@ import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import {Checkbox } from '@mui/material';
+import ImageWithRetry from './ImageComponent';
 
 export default function TableElement({ data, deleteArray, setDeleteArray }) {
     const navigate = useNavigate();
@@ -28,7 +29,8 @@ export default function TableElement({ data, deleteArray, setDeleteArray }) {
                         />
                     </TableCell>
                     <LogoTableCell logo onClick={() => { navigate(`/overview/${data._id}`) }}>
-                        <Logo src={data.logo} alt={data.name} />
+                        {/* <Logo src={data.logo} alt={data.name} /> */}
+                        <ImageWithRetry url={data.url} imageUrl={data.logo} logo={true}/>
                         {data.name}
                     </LogoTableCell>
                     <TableCell>
@@ -87,11 +89,6 @@ const LogoTableCell = styled(TableCell)`
     }
 `;
 
-const Logo = styled.img`
-    width: 20px;
-    height: 20px;
-    margin-right: 8px; /* Space between logo and name */
-`;
 
 const SocialTagsDiv = styled.div`
     display: flex;

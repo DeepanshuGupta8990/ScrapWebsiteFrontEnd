@@ -7,6 +7,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import MailIcon from '@mui/icons-material/Mail';
 import CompanyDetails from '../components/CompanyDetails';
 import ScreenShotComp from '../components/ScreenShotComp';
+import ImageWithRetry from '../components/ImageComponent';
 
 export default function OverView() {
   const { dynamicId } = useParams();
@@ -30,7 +31,7 @@ export default function OverView() {
     {scrapData && (
       <>
     <HeaderComp>
-       <ScrapImage src={scrapData.logo} alt="Scrap Logo"/>
+       <ImageWithRetry url={scrapData.url} imageUrl={scrapData.logo} logo={false}/>
      
 
       <CompleteInfoDiv>
@@ -73,10 +74,7 @@ export default function OverView() {
   );
 }
 
-const ScrapImage = styled.img`
-  width: 152px;
-  height: 152px;
-`;
+
 
 export const Heading = styled.div`
   display: flex;
@@ -96,6 +94,12 @@ const InfoDiv = styled.div`
   align-items: center;
   height: 118px;
   gap: 50px;
+  @media (max-width: 650px) {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
+  }
+
 `
 const ContactInfoDiv = styled.div`
   display: flex;
@@ -154,5 +158,9 @@ const MiddleComp = styled.div`
   flex-direction: row;
   gap: 5px;
   width: 100%;
-
+  @media (max-width: 650px) {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
+  }
 `

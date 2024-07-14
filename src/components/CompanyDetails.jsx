@@ -103,6 +103,10 @@ const InfoDiv = styled.div`
   margin: 5px;
   padding: 30px;
   gap: 20px;
+  @media (max-width: 650px) {
+    min-width: 90%;
+    max-width: 90%;
+  }
 `;
 
 const NewPtag = styled(Ptag)`
